@@ -1,10 +1,12 @@
 from selenium import webdriver
 import time
+from datetime import datetime
 import random
 
 #+-+-+-+-+-+-+-+-+-+-+-+-+- GLOBAL DECLARATIONS +-+-+-+-+-+-+-+-+-
 chat_name = ['Trial','Trial2']
 messages = ['Hello, Good Morning', 'I hope you have a good day', 'Good to be awake', 'Got up early today', 'How are you doing today?']
+timeToSend = ['02:19 AM','02:21 AM']
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-++-+-+-+-
 
 class WhatsAppBot():
@@ -43,12 +45,19 @@ class WhatsAppBot():
 bot = WhatsAppBot()
 bot.login()
 
+lock = 0
 while True:
 		try:
-			for i in chat_name:
-				bot.searchChat(i)
-				bot.sendMessage(i)
-				time.sleep(2)
+			if(datetime.now().strftime("%H:%M %p") in timeToSend and lock==0):
+				lock = 1
+				for i in chat_name:
+					bot.searchChat(i)
+					bot.sendMessage(i)
+					time.sleep(2)
+			elif(datetime.now().strftime("%H:%M %p") not in timeToSend):
+				lock=0
+			time.sleep(25)
 		except Exception as e:
 			print("\n------ERROR------\n")
 			print(e)
+
