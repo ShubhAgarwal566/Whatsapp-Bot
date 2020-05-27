@@ -6,7 +6,7 @@ import random
 #+-+-+-+-+-+-+-+-+-+-+-+-+- GLOBAL DECLARATIONS +-+-+-+-+-+-+-+-+-
 chat_name = ['Trial','Trial2']
 messages = ['Hello, Good Morning', 'I hope you have a good day', 'Good to be awake', 'Got up early today', 'How are you doing today?']
-timeToSend = ['02:19 AM','02:21 AM']
+timeToSend = ['06:00 AM','06:30 AM']
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-++-+-+-+-
 
 class WhatsAppBot():
