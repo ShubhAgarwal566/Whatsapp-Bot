@@ -1,10 +1,10 @@
 from selenium import webdriver
 import time
+import random
 
 #+-+-+-+-+-+-+-+-+-+-+-+-+- GLOBAL DECLARATIONS +-+-+-+-+-+-+-+-+-
 chat_name = ['Trial','Trial2']
-message = 'Hi i am shubh'
-count = 0
+messages = ['Hello, Good Morning', 'I hope you have a good day', 'Good to be awake', 'Got up early today', 'How are you doing today?']
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-++-+-+-+-
 
 class WhatsAppBot():
@@ -29,12 +29,10 @@ class WhatsAppBot():
 			time.sleep(1)
 
 	def sendMessage(self, name):
-		global count
 		chat = self.driver.find_element_by_xpath('//span[@title="{}"]'.format(name))
 		chat.click()				
 		chatBox = self.driver.find_element_by_xpath('//div[@class="_1Plpp"]')
-		chatBox.send_keys(message+str(count))
-		count+=1
+		chatBox.send_keys(random.choice(messages))
 		time.sleep(1)
 		sendButton = self.driver.find_element_by_xpath('//button[@class="_35EW6"]')
 		sendButton.click()
