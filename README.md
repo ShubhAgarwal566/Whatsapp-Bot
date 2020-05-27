@@ -9,9 +9,8 @@ Install selenium library to control automation via python
 `pip install selenium`
         
 ### Usage:
-`git clone https://github.com/ShubhAgarwal566/Whatsapp-Bot.git`
-
-`python main.py`
+```git clone https://github.com/ShubhAgarwal566/Whatsapp-Bot.git
+python main.py```
 
 ### Support Me:
 If you like this, leave a star
