@@ -2,7 +2,7 @@ from selenium import webdriver
 import time
 
 #+-+-+-+-+-+-+-+-+-+-+-+-+- GLOBAL DECLARATIONS +-+-+-+-+-+-+-+-+-
-chat_name = ['Trial', 'Trial2']
+chat_name = ['Trial','Trial2']
 message = 'Hi i am shubh'
 count = 0
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-++-+-+-+-
@@ -20,9 +20,13 @@ class WhatsAppBot():
 				print('Scanning Successful')
 				break
 			except Exception as e:
-				print(e)
+				pass
 			time.sleep(1)
-		chat.click()
+
+	def searchChat(self, name):
+			searchBox = self.driver.find_element_by_xpath('//label[@class="_2MSJr"]//div[@class="_2S1VP copyable-text selectable-text"]')
+			searchBox.send_keys(name)
+			time.sleep(1)
 
 	def sendMessage(self, name):
 		global count
@@ -31,13 +35,12 @@ class WhatsAppBot():
 		chatBox = self.driver.find_element_by_xpath('//div[@class="_1Plpp"]')
 		chatBox.send_keys(message+str(count))
 		count+=1
-		time.sleep(.5)
+		time.sleep(1)
 		sendButton = self.driver.find_element_by_xpath('//button[@class="_35EW6"]')
 		sendButton.click()
 
 	def quit(self):
 		self.driver.quit()
-
 
 bot = WhatsAppBot()
 bot.login()
@@ -45,6 +48,7 @@ bot.login()
 while True:
 		try:
 			for i in chat_name:
+				bot.searchChat(i)
 				bot.sendMessage(i)
 				time.sleep(2)
 		except Exception as e:
